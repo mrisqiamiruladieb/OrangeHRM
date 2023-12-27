@@ -27,6 +27,7 @@ public class ForgotYourPassword extends env_target {
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()[contains(., 'Forgot your password?')]]"))
         );
         //Set element locate
+        //Click forgot your password button
         driver.findElement(By.xpath("//p[text()[contains(., 'Forgot your password?')]]")).click();
         //Set case stop tunggu
         wait.until(
@@ -36,7 +37,9 @@ public class ForgotYourPassword extends env_target {
                 )
         );
         //Set element locate
+        //Input username
         driver.findElement(By.name("username")).sendKeys("lupa_password");
+        //Click Reset Password Button
         driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Reset Password')]]")).click();
         //Set case stop tunggu
         wait.until(

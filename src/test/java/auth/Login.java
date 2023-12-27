@@ -24,11 +24,17 @@ public class Login extends env_target {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         //Set case stop tunggu
         wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                ExpectedConditions.and(
+                        ExpectedConditions.visibilityOfElementLocated(By.name("username")),
+                        ExpectedConditions.visibilityOfElementLocated(By.name("password")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                )
         );
         //Set element locate
+        //Input username and password
         driver.findElement(By.name("username")).sendKeys("Admin");
         driver.findElement(By.name("password")).sendKeys("admin123");
+        //Click login button
         driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]")).click();
         //Set case stop tunggu
         wait.until(
@@ -52,11 +58,17 @@ public class Login extends env_target {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         //Set case stop tunggu
         wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                ExpectedConditions.and(
+                        ExpectedConditions.visibilityOfElementLocated(By.name("username")),
+                        ExpectedConditions.visibilityOfElementLocated(By.name("password")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                )
         );
         //Set element locate
+        //Input username and password
         driver.findElement(By.name("username")).sendKeys("username_salah");
         driver.findElement(By.name("password")).sendKeys("password_salah");
+        //Click login button
         driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]")).click();
         //Set case stop tunggu
         wait.until(
@@ -80,16 +92,24 @@ public class Login extends env_target {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         //Set case stop tunggu
         wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                ExpectedConditions.and(
+                        ExpectedConditions.visibilityOfElementLocated(By.name("username")),
+                        ExpectedConditions.visibilityOfElementLocated(By.name("password")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]"))
+                )
         );
         //Set element locate
+        //Input username and password
         driver.findElement(By.name("username")).sendKeys("");
         driver.findElement(By.name("password")).sendKeys("");
+        //Click login button
         driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Login')]]")).click();
         //Set case stop tunggu
         wait.until(
-                ExpectedConditions.or(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/span")))
+                ExpectedConditions.or(
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/span"))
+                )
         );
         //Quit chrome
         driver.quit();

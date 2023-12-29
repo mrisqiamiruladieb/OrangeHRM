@@ -18,8 +18,7 @@ ___
 
 #### 2. Resolving //*[contains(text(), 'string')] not working in XPath
 - `Solution` : //button[text()[contains(., 'Login')]]
-- `References` : [Ref 1](https://stackoverflow.com/questions/71253563/why-is-containstext-string-not-working-in-xpath) 
-dan [Ref 2](https://stackoverflow.com/questions/3655549/xpath-containstext-some-string-doesnt-work-when-used-with-node-with-more/71255563#71255563)
+- `References` : [Ref 1](https://stackoverflow.com/questions/71253563/why-is-containstext-string-not-working-in-xpath) dan [Ref 2](https://stackoverflow.com/questions/3655549/xpath-containstext-some-string-doesnt-work-when-used-with-node-with-more/71255563#71255563)
 
 #### 3. Resolving wait.until(ExpectedConditions.visibilityOf Element1 OR Element2)
 - `Solution` : wait.until(
@@ -27,3 +26,12 @@ dan [Ref 2](https://stackoverflow.com/questions/3655549/xpath-containstext-some-
   ExpectedConditions.visibilityOfElementLocated(By.xpath("blabla2")))
   );
 - `References` : [Klik di sini](https://stackoverflow.com/questions/14840884/wait-untilexpectedconditions-visibilityof-element1-or-element2)
+
+#### 4. Resolving Inspect disappearing elements
+- `Issue details` : dropdown element missing when inspect click
+- `Solution` : on page &rarr; inspect &rarr; **Ctrl + Shift + P** &rarr; **focus** &rarr; **Rendering : Emulate a focused page** &rarr; done
+- `References` : [Klik di sini](https://www.youtube.com/watch?v=m7wAPcHzD0E)
+
+#### 5. Resolving Inspect TOAST message
+- `Solution` : on page &rarr; inspect &rarr; **Sources** &rarr; **Pause** &rarr; done
+-  `References` : [Klik di sini](https://youtu.be/lDAM30L1Mkw?si=rj6LROeWHUQej9dO)

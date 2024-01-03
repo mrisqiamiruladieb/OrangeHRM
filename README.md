@@ -35,3 +35,11 @@ ___
 #### 5. Resolving Inspect TOAST message
 - `Solution` : on page &rarr; inspect &rarr; **Sources** &rarr; **Pause** &rarr; done
 -  `References` : [Klik di sini](https://youtu.be/lDAM30L1Mkw?si=rj6LROeWHUQej9dO)
+
+#### 6. Resolving cannot ".clear()" / delete data in input form
+- `Solution` : using the libraries **import org.openqa.selenium.Keys;** and **import org.openqa.selenium.interactions.Actions;** then design the action you want to perform
+-  `References` : [Klik di sini](https://youtu.be/g3GHW5dNZq4?si=ssoaqZE_q15PMIpm)
+
+#### 7. Resolving conditions if/else with web-elements
+- `Solution` :  **driver.findElement(By.xpath("blabla")).isDisplayed()** or **driver.findElement(By.xpath("blabla")).getText().contains("blabla11")**
+- `References` : [Klik di sini](https://youtu.be/qpIyq4QGOyg?si=I8ECN1zjLka5Azc8)

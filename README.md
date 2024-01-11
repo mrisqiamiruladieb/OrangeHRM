@@ -43,3 +43,8 @@ ___
 #### 7. Resolving conditions if/else with web-elements
 - `Solution` :  **driver.findElement(By.xpath("blabla")).isDisplayed()** or **driver.findElement(By.xpath("blabla")).getText().contains("blabla11")**
 - `References` : [Klik di sini](https://youtu.be/qpIyq4QGOyg?si=I8ECN1zjLka5Azc8)
+
+#### 8. Resolving Uploading Files
+- `Solution` : Previously, for wait.until( ExpectedConditions.visibilityOfElementLocated(**do not use input file type tag element located from the form**) );,
+               input file type tag element located from the form, and find the path of the file to upload, then use the sendkeys
+- `References` : [Klik di sini](https://youtu.be/3jS-GAHZsR0?si=G8DNNcGQZ2ZsKyrm)

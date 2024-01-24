@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.Keys;
 
-import java.security.Key;
 import java.time.Duration;
 
 public class EditPayGrade extends env_target {
@@ -74,6 +73,7 @@ public class EditPayGrade extends env_target {
                 )
         );
         //Set element locate
+        //Click edit button
         driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]")).click();
         //Set case stop tunggu
         wait.until(
@@ -190,6 +190,7 @@ public class EditPayGrade extends env_target {
                 )
         );
         //Set element locate
+        //Click edit button
         driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]")).click();
         //Set case stop tunggu
         wait.until(

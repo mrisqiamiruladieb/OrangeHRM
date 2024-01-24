@@ -6,11 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.Keys;
 
+import java.security.Key;
 import java.time.Duration;
 
-public class AddPayGrade extends env_target {
-    @Test //Successfully add pay grade & currency
+public class EditPayGrade extends env_target {
+    @Test //Successfully edit pay grade & currency
     public void main(){
         //Set driver location path
         System.setProperty("webdriver.chrome.driver","src\\main\\resources\\drivers\\chromedriver.exe");
@@ -66,76 +69,61 @@ public class AddPayGrade extends env_target {
         //Set case stop tunggu
         wait.until(
                 ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()[contains(., 'Pay Grades')]]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]"))
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][text()[contains(., 'Records Found')]]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]"))
                 )
         );
         //Set element locate
-        //Click add button
-        driver.findElement(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]")).click();
+        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]")).click();
         //Set case stop tunggu
         wait.until(
                 ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Save')]]"))
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[1]/div/div/div/div[2]/input")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[2]/button[2]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][text()[contains(., 'Record Found')]]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/div[5]/div/button[2]"))
                 )
         );
         //Set element locate
-        //Input pay grade
-        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input")).sendKeys("add_pay_grade_test");
+        //Pay Grade - delete old data and fill in new data
+        Actions payGradeActions = new Actions(driver);
+        payGradeActions.click(driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[1]/div/div/div/div[2]/input")))
+                .keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE).sendKeys("edit_pay_grade_test")
+                .build().perform();
         //Click save button
-        driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Save')]]")).click();
+        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[2]/button[2]")).click();
         //Set case stop tunggu
-        //No records found info message
+        //Update success message
         wait.until(
-                ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-toast oxd-toast--info oxd-toast-container--toast'][contains(., 'No Records Found')]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][contains(., 'No Records Found')]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()[contains(., 'Currencies')]]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]"))
-                )
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast'][contains(., 'Successfully Updated')]"))
         );
         //Set element locate
-        //Add Currency
-        //Click add button
-        driver.findElement(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]")).click();
+        //Edit currency
+        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/div[5]/div/button[2]")).click();
         //Set case stop tunggu
         wait.until(
                 ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[1]/div/div/div/div[2]/div/div")),
                         ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[1]/div/div[2]/input")),
                         ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[2]/div/div[2]/input")),
                         ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[3]/button[2]"))
                 )
         );
         //Set element locate
-        //Select currency
-        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[1]/div/div/div/div[2]/div/div")).click();
-        //Set case stop tunggu
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='option'][@class='oxd-select-option'][contains(., 'IDR - Indonesian Rupiah')]"))
-        );
-        //Set element locate
-        //Click IDR - Indonesian Rupiah currency
-        driver.findElement(By.xpath("//div[@role='option'][@class='oxd-select-option'][contains(., 'IDR - Indonesian Rupiah')]")).click();
-        //Set case stop tunggu
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-select-text oxd-select-text--active'][contains(., 'IDR - Indonesian Rupiah')]"))
-        );
-        //Set element locate
-        //Input minimum salary
-        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[1]/div/div[2]/input")).sendKeys("3000000");
-        //Input maximum salary
-        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[2]/div/div[2]/input")).sendKeys("50000000");
+        //Currency - delete old data and fill in new data
+        Actions currencyMinActions = new Actions(driver);
+        currencyMinActions.click(driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[1]/div/div[2]/input")))
+                .keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE).sendKeys("1500000")
+                .build().perform();
+        Actions currencyMaxActions = new Actions(driver);
+        currencyMaxActions.click(driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[2]/div/div[2]/div/div[2]/input")))
+                .keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE).sendKeys("5000000")
+                .build().perform();
         //Click save button
         driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/form/div[3]/button[2]")).click();
         //Set case stop tunggu
-        //Save success message
+        //Update success message
         wait.until(
-                ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast'][contains(., 'Successfully Saved')]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][text()[contains(., 'Records Found')]]"))
-                )
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast'][contains(., 'Successfully Updated')]"))
         );
         //Quit chrome
         driver.quit();
@@ -197,23 +185,29 @@ public class AddPayGrade extends env_target {
         //Set case stop tunggu
         wait.until(
                 ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()[contains(., 'Pay Grades')]]")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]"))
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][text()[contains(., 'Records Found')]]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]"))
                 )
         );
         //Set element locate
-        //Click add button
-        driver.findElement(By.xpath("//button[@type='button'][text()[contains(., ' Add ')]]")).click();
+        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[4]/div/button[2]")).click();
         //Set case stop tunggu
         wait.until(
                 ExpectedConditions.and(
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input")),
-                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit'][text()[contains(., 'Save')]]"))
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[1]/div/div/div/div[2]/input")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[2]/button[2]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='oxd-text oxd-text--span'][text()[contains(., 'Record Found')]]")),
+                        ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div/div/div[5]/div/button[2]"))
                 )
         );
         //Set element locate
+        //Pay Grade - blank
+        Actions payGradeActions = new Actions(driver);
+        payGradeActions.click(driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[1]/div/div/div/div[2]/input")))
+                .keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE)
+                .build().perform();
         //Click save button
-        driver.findElement(By.xpath("//button[@type='submit'][text()[contains(., 'Save')]]")).click();
+        driver.findElement(By.xpath("//*[@id='app']/div[1]/div[2]/div[2]/div[1]/div/form/div[2]/button[2]")).click();
         //Set case stop tunggu
         //Error messages
         wait.until(
